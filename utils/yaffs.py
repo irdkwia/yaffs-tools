@@ -74,10 +74,11 @@ def extract_partition(
                 continue
 
             off = i + 0xA
-            metadata["name"] = ""
+            metadata["name"] = b""
             while data[off] != 0:
-                metadata["name"] += chr(data[off])
+                metadata["name"] += bytes([data[off]])
                 off += 1
+            metadata["name"] = metadata["name"].decode("ascii", errors="ignore")
         else:
             metadata["obj_id"] = metadata["obj_id"] | 0x10000000
             metadata["chk_id"] = metadata["chk_id"] & 0x1FFFFFFF
@@ -91,7 +92,7 @@ def extract_partition(
         entries.sort(key=lambda x: (x["chk_id"], -x["seq_id"], -x["offset"]))
         metadata = dict(entries[0])
         if metadata["chk_id"] != 0 or not metadata["header"]:
-            print("No header chunk for Object ID", idx)
+            print("No header chunk for Object ID", idx, "at", hex(metadata["offset"]))
             continue
         metadata["undelete"] = False
         if metadata["prt_id"] != 1 and metadata["prt_id"] <= 4 and try_undelete:
@@ -112,7 +113,7 @@ def extract_partition(
             chk_id = 1
             for e in entries:
                 if e["chk_id"] > chk_id:
-                    print("Missing chunk for Object ID", idx)
+                    print("Missing chunk for Object ID", idx, "at", hex(metadata["offset"]))
                     break
                 elif e["chk_id"] == chk_id:
                     # assert metadata["size"]==e["size"], "%d %d"%(metadata["size"], e["size"])
