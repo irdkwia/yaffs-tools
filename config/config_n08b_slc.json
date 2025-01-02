@@ -1,0 +1,6 @@
+{
+    "data_size": 4096,
+    "spare_size": 128,
+    "spare_layout": {"empty": 82, "seq_id": 18, "obj_id": 34, "chk_id": 50, "size": 66},
+    "partitions": [{"start": 17842176, "end": 39469056}]
+}
