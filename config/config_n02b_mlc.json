@@ -1,0 +1,6 @@
+{
+    "data_size": 4096,
+    "spare_size": 128,
+    "spare_layout": {"empty": 82, "seq_id": 18, "obj_id": 34, "chk_id": 50, "size": 66},
+    "partitions": [{"start": 82722816, "end": 140574720}, {"start": 140574720, "end": 508231680}, {"start": 508231680, "end": 804519936}, {"start": 804519936, "end": 1106214912}]
+}
