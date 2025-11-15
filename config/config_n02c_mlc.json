@@ -2,5 +2,5 @@
     "data_size": 4096,
     "spare_size": 128,
     "spare_layout": {"empty": 82, "seq_id": 18, "obj_id": 34, "chk_id": 50, "size": 66},
-    "partitions": [{"start": 320618496, "end": 326025216}, {"start": 326025216, "end": 622854144}]
+    "partitions": [{"start": 320077824, "end": 622854144}]
 }
